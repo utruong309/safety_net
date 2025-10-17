@@ -1,0 +1,86 @@
+# --- Python / FastAPI ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.env.*
+*.db
+venv/
+.venv/
+env/
+ENV/
+instance/
+.pytest_cache/
+.cache/
+.DS_Store
+
+# --- Go ---
+bin/
+*.exe
+*.test
+*.out
+go.sum
+*.log
+
+# --- Node / React ---
+node_modules/
+dist/
+build/
+*.log
+.env.local
+.env.development
+.env.production
+
+# --- Machine Learning / Models ---
+*.h5
+*.pt
+*.pkl
+*.joblib
+*.ckpt
+*.onnx
+*.npy
+*.npz
+model/
+models/
+runs/
+mlruns/
+data/
+datasets/
+output/
+checkpoints/
+__results__/
+
+# --- Jupyter / Notebooks ---
+.ipynb_checkpoints/
+
+# --- Docker / Compose ---
+*.pid
+*.sock
+*.tar
+*.bak
+logs/
+tmp/
+docker-compose.override.yml
+
+# --- AWS / MinIO Credentials ---
+.aws/
+minio/
+credentials.json
+config.json
+
+# --- Airflow ---
+airflow/logs/
+airflow/dags/__pycache__/
+airflow/airflow.db
+airflow/airflow-webserver.pid
+
+# --- IDE / Editor ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- System Files ---
+Thumbs.db
+.DS_Store
