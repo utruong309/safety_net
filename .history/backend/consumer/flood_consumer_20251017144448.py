@@ -26,19 +26,23 @@ class FloodRiskConsumer:
     """Async Kafka consumer for weather data processing and flood risk prediction."""
     
     def __init__(self) -> None:
+        # Configuration from environment
         self.kafka_bootstrap = os.getenv("KAFKA_BROKER", "localhost:9092")
         self.weather_topic = os.getenv("KAFKA_TOPIC_WEATHER", "weather_stream")
         self.postgres_dsn = self._build_postgres_dsn()
         self.model_path = os.getenv("MODEL_PATH", "backend/models/flood_model.txt")
         
+        # MLflow configuration
         self.mlflow_tracking_uri = os.getenv("MLFLOW_TRACKING_URI", "http://localhost:5000")
         self.mlflow_experiment = os.getenv("MLFLOW_EXPERIMENT", "flood-risk-prediction")
         
+        # Consumer state
         self.consumer: Optional[AIOKafkaConsumer] = None
         self.db_pool: Optional[asyncpg.Pool] = None
         self.model: Optional[lgb.Booster] = None
         self.running = False
         
+        # Metrics tracking
         self.processed_count = 0
         self.error_count = 0
         self.start_time = time.time()
