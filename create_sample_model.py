@@ -1,9 +1,3 @@
-#!/usr/bin/env python3
-"""
-Create a sample LightGBM model for flood risk prediction.
-This script creates a dummy model for testing the flood consumer.
-"""
-
 import numpy as np
 import lightgbm as lgb
 import os
@@ -21,7 +15,6 @@ def create_sample_model():
     X[:, 1] = X[:, 1] * 100     # humidity: 0-100%
     X[:, 2] = X[:, 2] * 50      # rain_1h: 0-50mm
     
-    # Create realistic flood risk targets
     # Higher risk with more rain, higher humidity, extreme temps
     y = (
         0.3 * (X[:, 2] / 50) +  # rain contribution

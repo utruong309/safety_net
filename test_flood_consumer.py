@@ -6,9 +6,9 @@ Sends sample weather data to Kafka topic for processing.
 
 import asyncio
 import json
-import time
+from typing import Dict, Any, List, cast
 from datetime import datetime, timezone
-from aiokafka import AIOKafkaProducer
+from aiokafka import AIOKafkaProducer  # type: ignore[import-not-found]
 
 async def send_test_weather_data():
     """Send sample weather data to Kafka for testing."""
@@ -21,10 +21,10 @@ async def send_test_weather_data():
     
     try:
         await producer.start()
-        print("✅ Kafka producer started")
+        print("Kafka producer started")
         
         # Sample weather data for different cities
-        weather_samples = [
+        weather_samples: List[Dict[str, Any]] = [
             {
                 "city": "New York",
                 "weather": {
@@ -66,27 +66,30 @@ async def send_test_weather_data():
         # Send each weather sample
         for i, weather_data in enumerate(weather_samples):
             await producer.send_and_wait("weather_stream", weather_data)
-            print(f"📤 Sent weather data for {weather_data['city']}: "
-                  f"temp={weather_data['weather']['temp']}°C, "
-                  f"humidity={weather_data['weather']['humidity']}%, "
-                  f"rain={weather_data['weather']['rain1h']}mm")
+            w = cast(Dict[str, float], weather_data["weather"])  # help type checker
+            print(
+                f"Sent weather data for {weather_data['city']}: "
+                f"temp={w['temp']}°C, "
+                f"humidity={w['humidity']}%, "
+                f"rain={w['rain1h']}mm"
+            )
             
             # Wait between messages
             await asyncio.sleep(2)
         
-        print("✅ All test weather data sent successfully!")
+        print("All test weather data sent successfully!")
         
     except Exception as e:
-        print(f"❌ Error sending weather data: {e}")
+        print(f"Error sending weather data: {e}")
     finally:
         await producer.stop()
-        print("✅ Kafka producer stopped")
+        print("Kafka producer stopped")
 
 async def main():
     """Main test function."""
-    print("🌤️  Sending test weather data to Kafka...")
+    print("Sending test weather data to Kafka...")
     await send_test_weather_data()
-    print("🎉 Test completed!")
+    print("Test completed!")
 
 if __name__ == "__main__":
     asyncio.run(main())

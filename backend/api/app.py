@@ -42,7 +42,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 async def init_kafka(app: FastAPI) -> None:
     """Initialize Kafka producer."""
     producer = AIOKafkaProducer(
