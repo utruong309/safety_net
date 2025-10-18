@@ -83,4 +83,4 @@ airflow/airflow-webserver.pid
 
 # --- System Files ---
 Thumbs.db
-.DS_Store
+.DS_Storemypy.ini
