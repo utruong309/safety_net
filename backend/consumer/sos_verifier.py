@@ -116,6 +116,8 @@ async def save_report(pool: asyncpg.Pool, report: Dict[str, Any]) -> None:
         report["verified"],
     )
 
+
+
 # ─────────────────────────────────────────────────────────────
 # Consumer class
 # ─────────────────────────────────────────────────────────────
