@@ -1,3 +1,0 @@
-[tool.mypy]
-pretty = true
-check_untyped_defs = true

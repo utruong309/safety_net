@@ -15,6 +15,7 @@ instance/
 .cache/
 .DS_Store
 .history
+.mypy.ini
 
 # --- Go ---
 bin/
