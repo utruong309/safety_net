@@ -14,6 +14,8 @@ instance/
 .pytest_cache/
 .cache/
 .DS_Store
+.history
+.mypy.ini
 
 # --- Go ---
 bin/
@@ -84,3 +86,4 @@ airflow/airflow-webserver.pid
 # --- System Files ---
 Thumbs.db
 .DS_Storemypy.ini
+mypy.ini
