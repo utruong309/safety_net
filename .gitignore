@@ -87,3 +87,4 @@ airflow/airflow-webserver.pid
 Thumbs.db
 .DS_Storemypy.ini
 mypy.ini
+mypy.ini
