@@ -11,7 +11,8 @@ CREATE TABLE IF NOT EXISTS sos_reports (
   latitude DOUBLE PRECISION,
   longitude DOUBLE PRECISION,
   image_url TEXT,
-  verified BOOLEAN,
-  severity TEXT,
+  status TEXT DEFAULT 'verified',
+  verified BOOLEAN DEFAULT true,
+  severity TEXT DEFAULT 'medium',
   created_at TIMESTAMP DEFAULT NOW()
 );

@@ -128,8 +128,8 @@ async def create_sos_report(
     try:
         async with pool.acquire() as conn:
             await conn.execute("""
-                INSERT INTO sos_reports (text, latitude, longitude, image_url, created_at)
-                VALUES ($1, $2, $3, $4, NOW())
+                INSERT INTO sos_reports (text, latitude, longitude, image_url, status, verified, created_at)
+                VALUES ($1, $2, $3, $4, 'verified', true, NOW())
             """, text, latitude, longitude, image_url or None)
     except Exception as e:
         logger.error(f"Database insert failed: {e}")
